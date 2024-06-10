@@ -14,7 +14,7 @@ def capture_frame():
     start_time = time.time()
 
     # Loop to continuously read and display frames from the webcam for 5 seconds
-    while (time.time() - start_time) < 1:
+    while (time.time() - start_time) < 3:
         # Capture frame-by-frame
         ret, frame = cap.read()
 
@@ -29,8 +29,8 @@ def capture_frame():
     # Capture a frame before ending
     ret, frame = cap.read()
     if ret:
-        cv2.imwrite('captured_image.jpg', frame)
-        print("Frame captured successfully as 'captured_image.jpg'.")
+        cv2.imwrite('text_image.jpg', frame)
+        print("Frame captured successfully as 'text_image.jpg'.")
 
     # Release the webcam and close all OpenCV windows
     cap.release()

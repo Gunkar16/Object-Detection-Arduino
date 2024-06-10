@@ -1,8 +1,8 @@
 from gtts import gTTS
-from playsound import playsound
 import os
 import argparse
 from collections import Counter
+import pygame
 
 def pluralize(word, count):
     if count == 1:
@@ -69,8 +69,14 @@ if __name__ == "__main__":
     speech_file = "translated_speech.mp3"
     tts.save(speech_file)
 
-    # Play the speech
-    playsound(speech_file)
+    # Initialize pygame mixer
+    pygame.mixer.init()
 
-    # Remove the temporary file
-    os.remove(speech_file)
+    # Load and play the speech
+    pygame.mixer.music.load(speech_file)
+    pygame.mixer.music.play()
+
+    # Wait for the speech to finish playing
+    while pygame.mixer.music.get_busy():
+        continue
+
